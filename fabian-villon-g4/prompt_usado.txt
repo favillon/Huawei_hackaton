@@ -70,3 +70,22 @@ Todo protegido con asyncio.Lock. check_blocklist() para short-circuit DECLINE.
 - Tarjeta bloqueada → check_blocklist devuelve card_temporarily_blocked
 - Tras 120s → tarjeta desbloqueada automáticamente
 - 4 cards distintas mismo device → velocity_device(+50)
+
+## Prompt 6 — Scoring ponderado + circuit breaker (Fase 3)
+
+```
+Implementar scoring y resiliencia:
+1. scoring.py: compute_score = min(sum(weights), 100), umbrales
+   APPROVE <40, REVIEW 40-74, DECLINE >=75. Si circuit degradado →
+   APPROVE degrada a REVIEW (DECLINE no se override).
+2. circuit_breaker.py: 3 fallos consecutivos → OPEN 15s → SEMI_OPEN →
+   trial call → success cierra / fail re-abre. asyncio.Lock protege estado.
+3. mock_bank_auth.py: 30% falla o timeout (split entre error y timeout).
+```
+
+**Resultado:** Tests pasados:
+- Score cap: 155 → 100 (DECLINE)
+- Circuit degradation: APPROVE → REVIEW cuando circuit open
+- DECLINE no se override por circuit degradation
+- 3 fallos consecutivos → circuit OPEN → degraded sin llamar servicio
+- Tras 15s → semi-open → trial success → CLOSED
