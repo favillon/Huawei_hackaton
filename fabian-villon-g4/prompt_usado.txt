@@ -1,1 +1,54 @@
-# Prompts
+# Prompts usados con GLM 5.2 — SentinelPay Risk Engine (RETO 4)
+
+## Prompt 1 — Análisis del enunciado y arquitectura
+
+```
+Revisar el archivo Retos/RETO_4_SentinelPay_Risk_Engine.md. Haz un análisis del
+objetivo e indica la tecnología y método más apropiados para implementar toda esta
+lógica. Considerar código limpio y mejores prácticas. La carpeta "codigo" es donde
+se implementa el código, "prompt_usado.txt" registra los prompts, "requerimientos.txt"
+define las dependencias.
+```
+
+**Decisión de GLM 5.2:** Python 3.11 + FastAPI + Pydantic + httpx + Jinja2/HTMX.
+Razón: async nativo para ráfagas, Pydantic para modelos tipados, un solo servidor
+sirve API y GUI. GLM 5.2 es copiloto de desarrollo (no entra en runtime).
+
+## Prompt 2 — Diseño de modelos de dominio
+
+```
+Definir los modelos Pydantic para SentinelPay: Transaction (id, card_id,
+merchant_id, amount, currency, country, ip_country, device_id, ip, timestamp),
+Reason (rule, weight, detail), EvaluationResult (transaction_id, score, decision,
+reasons, bank_auth_status), RuleConfig (enabled, weight), ScoringConfig con pesos
+por defecto del reto: amount=25, country=30, hour=10, velocity_card=40,
+velocity_device=50. Umbrales: APPROVE <40, REVIEW 40-74, DECLINE >=75.
+```
+
+**Resultado:** Modelos creados en app/domain/models.py. Config con defaults en
+app/config.py. Score cap a 100 con min(sum(weights), 100).
+
+## Prompt 3 — Scaffold del proyecto
+
+```
+Crear la estructura del proyecto FastAPI para SentinelPay: app/__init__.py,
+app/main.py con endpoint /health, run.py con uvicorn, requirements.txt con
+fastapi, uvicorn, pydantic, pydantic-settings, httpx, jinja2, python-multipart,
+pytest, pytest-asyncio.
+```
+
+**Resultado:** Servidor arranca en :8000. Verificado con import de app.main.
+
+## Prompt 4 — Reglas estáticas (Fase 1)
+
+```
+Implementar 3 reglas estáticas configurables en app/rules/static.py:
+1. amount_anomaly: si amount > 3x promedio histórico de la tarjeta → +25
+2. country_mismatch: si country ≠ ip_country → +30
+3. unusual_hour: entre 1am-5am → +10
+Cada regla respeta enabled/weight desde ScoringConfig. Historial in-memory
+dict[card_id, list[amount]]. Devolver list[Reason].
+```
+
+**Resultado:** StaticRuleEngine con 3 reglas. Verificado con ejemplo del reto:
+CO/RU 4:58am → country_mismatch(+30) + unusual_hour(+10) = 40.
