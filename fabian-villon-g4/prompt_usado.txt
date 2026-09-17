@@ -128,3 +128,21 @@ Incluir router en app/main.py.
   6 velocity_card(+40), 7 DECLINE card_temporarily_blocked ✅
 - /api/config y /api/state retornan JSON correcto ✅
 - Swagger UI en /docs con todos los schemas ✅
+
+## Prompt 9 — GUI Control Room (Fase 4)
+
+```
+Implementar GUI con Jinja2 + HTMX en app/templates/:
+- index.html: formulario con todos los campos de transacción, pre-poblado
+  con el ejemplo del reto. Botones "Evaluar" y "Simular ráfaga (6x)".
+- _result.html: fragmento con score color-coded (verde/amarillo/rojo),
+  tabla de razones (rule, weight, detail), bank_auth_status.
+- _burst.html: tabla con N transacciones, score badge, decisión, razones.
+Rutas HTML en routes.py: GET /, POST /evaluate-form, POST /burst-form.
+```
+
+**Resultado:** GUI verificada en navegador:
+- Evaluar CO/RU 4:58am → 40 · REVIEW con country_mismatch(+30) + unusual_hour(+10) ✅
+- Simular ráfaga 6x → txns 1-3 APPROVE, 4-5 REVIEW (circuit degrade),
+  6 velocity_card(+40) → tarjeta bloqueada ✅
+- Score color-coded: verde APPROVE, amarillo REVIEW, rojo DECLINE ✅

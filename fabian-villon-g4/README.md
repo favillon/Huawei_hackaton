@@ -57,7 +57,7 @@ Abrir `http://localhost:8000` en el navegador.
 - [x] Step 5 — Scoring + circuit breaker (Fase 3): score cap 100, umbrales APPROVE/REVIEW/DECLINE, circuit breaker 3 fallos → open 15s → semi-open
 - [x] Step 6 — Orquestador evaluate(): RiskEngine orquesta blocklist → static rules → velocity → bank auth → result
 - [x] Step 7 — Rutas API: POST /api/evaluate, /api/evaluate/batch, /api/simulate/burst, GET /api/config, /api/state
-- [ ] Step 8 — GUI (Fase 4)
+- [x] Step 8 — GUI (Fase 4): formulario, score color-coded, simular ráfaga 6x, HTMX
 - [ ] Step 9 — Tests
 - [ ] Step 10 — Documentación final
 

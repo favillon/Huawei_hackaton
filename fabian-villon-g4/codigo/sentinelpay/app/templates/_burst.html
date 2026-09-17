@@ -1,0 +1,23 @@
+<table class="burst-table">
+    <thead>
+        <tr>
+            <th>#</th>
+            <th>Txn ID</th>
+            <th>Score</th>
+            <th>Decisión</th>
+            <th>Razones</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for r in results %}
+        <tr>
+            <td>{{ loop.index }}</td>
+            <td>{{ r.transaction_id }}</td>
+            <td><span class="score-badge decision-{{ r.decision }}" style="font-size:0.85rem;padding:0.15rem 0.4rem;">{{ r.score }}</span></td>
+            <td>{{ r.decision }}</td>
+            <td>{{ r.reasons | map(attribute='rule') | join(', ') }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+<p class="meta">{{ results | length }} transacciones procesadas.</p>
