@@ -1,1 +1,20 @@
-REQUERIMIENTOS
+REQUERIMIENTOS — SentinelPay Risk Engine (RETO 4)
+
+Stack: Python 3.11 + FastAPI + Pydantic + httpx + Jinja2/HTMX
+
+Dependencias (codigo/sentinelpay/requirements.txt):
+- fastapi >= 0.115.0        — Framework web async, sirve API y GUI
+- uvicorn[standard] >= 0.30.0 — Servidor ASGI con reload
+- pydantic >= 2.0.0         — Modelos tipados y validación de schema
+- pydantic-settings >= 2.0.0 — Config desde variables de entorno
+- httpx >= 0.27.0           — Cliente HTTP async (mock_bank_auth, futuras integraciones)
+- jinja2 >= 3.1.0           — Templates HTML para la GUI
+- python-multipart >= 0.0.9 — Parseo de formularios en FastAPI
+- pytest >= 8.0.0           — Framework de tests
+- pytest-asyncio >= 0.23.0  — Soporte async para pytest
+
+Instalación:
+  cd fabian-villon-g4/codigo/sentinelpay
+  python3 -m venv .venv
+  source .venv/bin/activate
+  pip install -r requirements.txt
