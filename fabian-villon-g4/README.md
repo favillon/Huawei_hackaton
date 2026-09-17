@@ -54,7 +54,7 @@ Abrir `http://localhost:8000` en el navegador.
 - [x] **Step 2 — Modelos de dominio:** Transaction, Reason, EvaluationResult, RuleConfig, ScoringConfig con defaults del reto.
 - [x] Step 3 — Reglas estáticas (Fase 1): amount_anomaly, country_mismatch, unusual_hour
 - [x] Step 4 — Sliding window + velocity + blocklist (Fase 2): velocity_card +40, velocity_device +50, blocklist 120s con auto-expiración
-- [ ] Step 5 — Scoring + circuit breaker (Fase 3)
+- [x] Step 5 — Scoring + circuit breaker (Fase 3): score cap 100, umbrales APPROVE/REVIEW/DECLINE, circuit breaker 3 fallos → open 15s → semi-open
 - [ ] Step 6 — Orquestador evaluate()
 - [ ] Step 7 — Rutas API
 - [ ] Step 8 — GUI (Fase 4)
