@@ -1,0 +1,60 @@
+- generic [ref=f1e1]:
+  - banner [ref=f1e2]:
+    - heading "🛡️ SentinelPay Risk Engine — Control Room" [level=1] [ref=f1e3]
+  - generic [ref=f1e4]:
+    - generic [ref=f1e5]:
+      - heading "Evaluar Transacción" [level=2] [ref=f1e6]
+      - generic [ref=f1e7]:
+        - generic [ref=f1e8]:
+          - generic [ref=f1e9]: ID
+          - textbox [ref=f1e10]: txn_00234
+        - generic [ref=f1e11]:
+          - generic [ref=f1e12]: Card ID
+          - textbox [ref=f1e13]: card_9F21
+        - generic [ref=f1e14]:
+          - generic [ref=f1e15]: Merchant ID
+          - textbox [ref=f1e16]: merch_petshop_bog
+        - generic [ref=f1e17]:
+          - generic [ref=f1e18]: Amount
+          - spinbutton [ref=f1e19]: "850000"
+        - generic [ref=f1e20]:
+          - generic [ref=f1e21]: Currency
+          - textbox [ref=f1e22]: COP
+        - generic [ref=f1e23]:
+          - generic [ref=f1e24]: Country (tarjeta)
+          - textbox [ref=f1e25]: CO
+        - generic [ref=f1e26]:
+          - generic [ref=f1e27]: IP Country
+          - textbox [ref=f1e28]: RU
+        - generic [ref=f1e29]:
+          - generic [ref=f1e30]: Device ID
+          - textbox [ref=f1e31]: dev_a19x
+        - generic [ref=f1e32]:
+          - generic [ref=f1e33]: IP
+          - textbox [ref=f1e34]: 185.220.101.14
+        - generic [ref=f1e35]:
+          - generic [ref=f1e36]: Timestamp
+          - textbox [ref=f1e37]: 2024-11-28T04:58
+        - generic [ref=f1e38]:
+          - button "Evaluar" [active] [ref=f1e39] [cursor=pointer]
+          - button "Simular ráfaga (6x)" [ref=f1e40] [cursor=pointer]
+    - generic [ref=f1e41]:
+      - heading "Resultado" [level=2] [ref=f1e42]
+      - generic [ref=f1e45]:
+        - generic [ref=f1e46]: 40 · REVIEW
+        - table [ref=f1e47]:
+          - rowgroup [ref=f1e48]:
+            - row [ref=f1e49]:
+              - columnheader "Regla" [ref=f1e50]
+              - columnheader "Peso" [ref=f1e51]
+              - columnheader "Detalle" [ref=f1e52]
+          - rowgroup [ref=f1e53]:
+            - row [ref=f1e54]:
+              - cell "country_mismatch" [ref=f1e55]
+              - cell "+30" [ref=f1e56]
+              - cell "card_country=CO, ip_country=RU" [ref=f1e57]
+            - row [ref=f1e58]:
+              - cell "unusual_hour" [ref=f1e59]
+              - cell "+10" [ref=f1e60]
+              - cell "04:58 local time" [ref=f1e61]
+        - paragraph [ref=f1e62]: "Transaction: txn_00234 · Bank auth: ok"

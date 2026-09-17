@@ -1,0 +1,22 @@
+<div class="result-card">
+    <span class="score-badge decision-{{ result.decision }}">{{ result.score }} · {{ result.decision }}</span>
+    {% if result.reasons %}
+    <table class="reasons-table">
+        <thead>
+            <tr><th>Regla</th><th>Peso</th><th>Detalle</th></tr>
+        </thead>
+        <tbody>
+            {% for r in result.reasons %}
+            <tr>
+                <td>{{ r.rule }}</td>
+                <td>+{{ r.weight }}</td>
+                <td>{{ r.detail }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    {% else %}
+    <p style="margin-top:0.5rem;color:#888;">Sin reglas activadas.</p>
+    {% endif %}
+    <p class="meta">Transaction: {{ result.transaction_id }} · Bank auth: {{ result.bank_auth_status or "N/A" }}</p>
+</div>
