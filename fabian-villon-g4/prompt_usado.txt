@@ -108,3 +108,23 @@ Método get_state() para inspección de blocklist y circuit breaker.
 - 6 txns misma tarjeta → 6ª activa velocity_card(+40) + bloquea
 - Txn #7 → DECLINE inmediato con card_temporarily_blocked
 - Blocklist poblada correctamente, circuit breaker operativo
+
+## Prompt 8 — Rutas API (Step 7)
+
+```
+Implementar rutas FastAPI en app/api/routes.py:
+- POST /api/evaluate (single transaction → EvaluationResult)
+- POST /api/evaluate/batch (list of transactions)
+- POST /api/simulate/burst (N txns misma tarjeta, interval configurable)
+- GET /api/config (ScoringConfig actual)
+- GET /api/state (blocklist + circuit breaker)
+RiskEngine singleton a nivel módulo para persistir estado entre requests.
+Incluir router en app/main.py.
+```
+
+**Resultado:** Todos los endpoints verificados via curl:
+- /api/evaluate CO/RU 4:58am → score=40 REVIEW ✅
+- /api/simulate/burst 7x → txns 1-3 APPROVE, 4-5 REVIEW (circuit degrade),
+  6 velocity_card(+40), 7 DECLINE card_temporarily_blocked ✅
+- /api/config y /api/state retornan JSON correcto ✅
+- Swagger UI en /docs con todos los schemas ✅
