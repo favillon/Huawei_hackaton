@@ -56,7 +56,7 @@ Abrir `http://localhost:8000` en el navegador.
 - [x] Step 4 — Sliding window + velocity + blocklist (Fase 2): velocity_card +40, velocity_device +50, blocklist 120s con auto-expiración
 - [x] Step 5 — Scoring + circuit breaker (Fase 3): score cap 100, umbrales APPROVE/REVIEW/DECLINE, circuit breaker 3 fallos → open 15s → semi-open
 - [x] Step 6 — Orquestador evaluate(): RiskEngine orquesta blocklist → static rules → velocity → bank auth → result
-- [ ] Step 7 — Rutas API
+- [x] Step 7 — Rutas API: POST /api/evaluate, /api/evaluate/batch, /api/simulate/burst, GET /api/config, /api/state
 - [ ] Step 8 — GUI (Fase 4)
 - [ ] Step 9 — Tests
 - [ ] Step 10 — Documentación final

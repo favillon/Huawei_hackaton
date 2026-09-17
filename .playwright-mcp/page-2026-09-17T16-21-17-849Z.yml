@@ -1,0 +1,122 @@
+- generic [ref=e4]:
+  - generic [ref=e8]:
+    - heading "SentinelPay Risk Engine 0.1.0 OAS 3.1" [level=1] [ref=e9]:
+      - text: SentinelPay Risk Engine
+      - generic [ref=e10]:
+        - generic [ref=e11]: 0.1.0
+        - generic [ref=e13]: OAS 3.1
+    - link "/openapi.json" [ref=e15] [cursor=pointer]:
+      - /url: /openapi.json
+  - main [ref=e17]:
+    - generic [ref=e20]:
+      - generic [ref=e22]:
+        - heading [level=3] [ref=e23] [cursor=pointer]:
+          - link "sentinelpay" [ref=e24]:
+            - /url: "#/sentinelpay"
+          - button "Collapse operation" [expanded] [ref=e25]
+        - generic [ref=e29]:
+          - generic [ref=e32] [cursor=pointer]:
+            - button "POST /api/evaluate Evaluate" [ref=e33]:
+              - generic [ref=e34]: POST
+              - generic [ref=e35]:
+                - link "/api/evaluate" [ref=e37]:
+                  - /url: "#/sentinelpay/evaluate_api_evaluate_post"
+                - generic [ref=e39]: Evaluate
+            - generic "Copy path to clipboard":
+              - button "Copy path to clipboard"
+            - button "post /api/evaluate" [ref=e40]
+          - generic [ref=e45] [cursor=pointer]:
+            - button "POST /api/evaluate/batch Evaluate Batch" [ref=e46]:
+              - generic [ref=e47]: POST
+              - generic [ref=e48]:
+                - link "/api/evaluate/batch" [ref=e50]:
+                  - /url: "#/sentinelpay/evaluate_batch_api_evaluate_batch_post"
+                - generic [ref=e52]: Evaluate Batch
+            - generic "Copy path to clipboard":
+              - button "Copy path to clipboard"
+            - button "post /api/evaluate/batch" [ref=e53]
+          - generic [ref=e58] [cursor=pointer]:
+            - button "POST /api/simulate/burst Simulate Burst" [ref=e59]:
+              - generic [ref=e60]: POST
+              - generic [ref=e61]:
+                - link "/api/simulate/burst" [ref=e63]:
+                  - /url: "#/sentinelpay/simulate_burst_api_simulate_burst_post"
+                - generic [ref=e65]: Simulate Burst
+            - generic "Copy path to clipboard":
+              - button "Copy path to clipboard"
+            - button "post /api/simulate/burst" [ref=e66]
+          - generic [ref=e71] [cursor=pointer]:
+            - button "GET /api/config Get Config" [ref=e72]:
+              - generic [ref=e73]: GET
+              - generic [ref=e74]:
+                - link "/api/config" [ref=e76]:
+                  - /url: "#/sentinelpay/get_config_api_config_get"
+                - generic [ref=e78]: Get Config
+            - generic "Copy path to clipboard":
+              - button "Copy path to clipboard"
+            - button "get /api/config" [ref=e79]
+          - generic [ref=e84] [cursor=pointer]:
+            - button "GET /api/state Get State" [ref=e85]:
+              - generic [ref=e86]: GET
+              - generic [ref=e87]:
+                - link "/api/state" [ref=e89]:
+                  - /url: "#/sentinelpay/get_state_api_state_get"
+                - generic [ref=e91]: Get State
+            - generic "Copy path to clipboard":
+              - button "Copy path to clipboard"
+            - button "get /api/state" [ref=e92]
+      - generic [ref=e96]:
+        - heading [level=3] [ref=e97] [cursor=pointer]:
+          - link "default" [ref=e98]:
+            - /url: "#/default"
+          - button "Collapse operation" [expanded] [ref=e99]
+        - generic [ref=e106] [cursor=pointer]:
+          - button "GET /health Health" [ref=e107]:
+            - generic [ref=e108]: GET
+            - generic [ref=e109]:
+              - link "/health" [ref=e111]:
+                - /url: "#/default/health_health_get"
+              - generic [ref=e112]: Health
+          - generic "Copy path to clipboard":
+            - button "Copy path to clipboard"
+          - button "get /health" [ref=e113]
+    - generic [ref=e118]:
+      - heading [level=4] [ref=e119] [cursor=pointer]:
+        - button "Schemas" [expanded] [ref=e120]
+      - generic [ref=e124]:
+        - article [ref=e125]:
+          - generic [ref=e126]:
+            - button [ref=e127] [cursor=pointer]:
+              - strong [ref=e129]: BurstRequest
+            - button "Expand all" [ref=e133] [cursor=pointer]
+            - strong [ref=e134]: object
+        - article [ref=e135]:
+          - generic [ref=e136]:
+            - button [ref=e137] [cursor=pointer]:
+              - strong [ref=e139]: EvaluationResult
+            - button "Expand all" [ref=e143] [cursor=pointer]
+            - strong [ref=e144]: object
+        - article [ref=e145]:
+          - generic [ref=e146]:
+            - button [ref=e147] [cursor=pointer]:
+              - strong [ref=e149]: HTTPValidationError
+            - button "Expand all" [ref=e153] [cursor=pointer]
+            - strong [ref=e154]: object
+        - article [ref=e155]:
+          - generic [ref=e156]:
+            - button [ref=e157] [cursor=pointer]:
+              - strong [ref=e159]: Reason
+            - button "Expand all" [ref=e163] [cursor=pointer]
+            - strong [ref=e164]: object
+        - article [ref=e165]:
+          - generic [ref=e166]:
+            - button [ref=e167] [cursor=pointer]:
+              - strong [ref=e169]: Transaction
+            - button "Expand all" [ref=e173] [cursor=pointer]
+            - strong [ref=e174]: object
+        - article [ref=e175]:
+          - generic [ref=e176]:
+            - button [ref=e177] [cursor=pointer]:
+              - strong [ref=e179]: ValidationError
+            - button "Expand all" [ref=e183] [cursor=pointer]
+            - strong [ref=e184]: object
