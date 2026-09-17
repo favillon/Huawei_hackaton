@@ -89,3 +89,22 @@ Implementar scoring y resiliencia:
 - DECLINE no se override por circuit degradation
 - 3 fallos consecutivos → circuit OPEN → degraded sin llamar servicio
 - Tras 15s → semi-open → trial success → CLOSED
+
+## Prompt 7 — Orquestador evaluate() (Step 6)
+
+```
+Implementar RiskEngine en app/engine/evaluate.py que orquesta:
+1. check_blocklist → si bloqueada, DECLINE inmediato (score=100, sin re-evaluar)
+2. static rules → reasons
+3. velocity rules → reasons (puede bloquear card/device)
+4. bank auth via circuit breaker → bank_auth_status
+5. build_result con scoring + decisión
+Método get_state() para inspección de blocklist y circuit breaker.
+```
+
+**Resultado:** Tests end-to-end pasados:
+- Transacción normal (CO/RU 4:58am) → score=40 REVIEW
+- Transacción limpia → score=0 APPROVE
+- 6 txns misma tarjeta → 6ª activa velocity_card(+40) + bloquea
+- Txn #7 → DECLINE inmediato con card_temporarily_blocked
+- Blocklist poblada correctamente, circuit breaker operativo
