@@ -52,3 +52,21 @@ dict[card_id, list[amount]]. Devolver list[Reason].
 
 **Resultado:** StaticRuleEngine con 3 reglas. Verificado con ejemplo del reto:
 CO/RU 4:58am → country_mismatch(+30) + unusual_hour(+10) = 40.
+
+## Prompt 5 — Sliding window, velocity y blocklist (Fase 2)
+
+```
+Implementar detección de card testing con ventana deslizante:
+1. SlidingWindow: deque por card_id con timestamps, ventana 10s
+2. DeviceCardWindow: cuenta card_ids distintos por device_id, ventana 30s
+3. Blocklist: dict[key, expiry] con auto-expiración lazy, TTL 120s
+4. VelocityRuleEngine: velocity_card (>5 txns/10s → +40 y bloquea tarjeta),
+   velocity_device (>3 cards/30s → +50 y bloquea dispositivo)
+Todo protegido con asyncio.Lock. check_blocklist() para short-circuit DECLINE.
+```
+
+**Resultado:** 3 tests pasados:
+- 6 txns en 7s → 6ª activa velocity_card(+40) + bloquea tarjeta
+- Tarjeta bloqueada → check_blocklist devuelve card_temporarily_blocked
+- Tras 120s → tarjeta desbloqueada automáticamente
+- 4 cards distintas mismo device → velocity_device(+50)
